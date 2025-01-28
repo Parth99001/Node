@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(59, 50, 116);
+            color: white;
+            margin: auto;
+        }
+        .one{
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+        }
+        .insert{
+            background-color: black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="insert">
+
+        <h1><span style="color: red;">The</span> Book Store</h1>
+        <form action="/add-data" method="post" enctype="multipart/form-data">
+            <label for="">Book Name: </label>
+            <input type="text" placeholder="Enter Book Name" name="userName" id=""><br><br>
+            <label for="">Email: </label>
+        <input type="email" placeholder="Enter Email" name="email" id=""><br><br>
+        <label for="">Autor-Name:</label>
+        <input type="text" placeholder="Enter Autor name" name="author" id=""><br><br>
+        <label for="">Price:</label>
+        <input type="text" name="price" placeholder="Enter Price" id=""><br><br>
+        <label for="">Upload</label>
+        <input type="file" name="image" id="" /><br><br>
+        <input style="background-color: red; color: white; border-radius: 5px;" type="submit" name="" id="">
+    </form>
+</div>
+
+    <div class="one">
+        <h2>List of Books</h2>
+        <table border="">
+            <tr>
+                <th>Book-Name</th>
+                <th>Email</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            <% userdata.map((data, i) => { %>
+                <tr>
+                    <td><%= data.userName %></td>
+                    <td><%= data.email%></td>
+                    <td><%= data.author%></td>
+                    <td><%= data.price%></td>
+                    <td><img src="<%= data.image %>" height="100px" width="auto" alt=""></td>
+                    <td style="display: flex; justify-content: space-evenly; "><a  href="/delete/<%= data.id %>"><button style="background-color: red; color: white; border-radius: 5px;">Delete</button></a> <a href="/edit/<%= data.id %>"><button style="background-color: blue; color: white; border-radius: 5px;">Edit</button></a></td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+</body>
+</html>
